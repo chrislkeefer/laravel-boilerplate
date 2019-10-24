@@ -11,10 +11,17 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <!-- Global Variables -->
+    <script>
+        window.Harpoon = {!! json_encode([
+            'user' => Auth::user()
+        ]) !!}
+    </script>
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none">
     <div id="app">
-        <nav class="bg-blue-900 shadow mb-8 py-6">
+        <nav class="bg-gray-500 mb-8 py-6">
             <div class="container mx-auto px-6 md:px-0">
                 <div class="flex items-center justify-center">
                     <div class="mr-6">
