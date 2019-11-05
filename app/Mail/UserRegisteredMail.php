@@ -9,9 +9,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 use App\Events\UserCreated;
 
-class UserRegistered extends Mailable implements ShouldQueue
+class UserRegisteredMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
+
+    protected $event;
 
     public function __construct(UserCreated $event)
     {
@@ -20,6 +22,6 @@ class UserRegistered extends Mailable implements ShouldQueue
 
     public function build()
     {
-        return $this->view('mail.users.registered', ['name' => $this->event->user->name]);
+        return $this->subject('Welcome to Harpoon App')->view('mail.users.registered', ['name' => $this->event->user->name]);
     }
 }

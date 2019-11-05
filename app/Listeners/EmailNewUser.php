@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\UserCreated;
-use App\Mail\UserRegistered;
+use App\Mail\UserRegisteredMail;
 use Illuminate\Support\Facades\Mail;
 
 class EmailNewUser
@@ -15,7 +15,7 @@ class EmailNewUser
 
     public function handle(UserCreated $event)
     {
-        Mail::to($event->user)
-            ->send(new UserRegistered($event));
+        Mail::to($event->user)            
+            ->send(new UserRegisteredMail($event));
     }
 }
