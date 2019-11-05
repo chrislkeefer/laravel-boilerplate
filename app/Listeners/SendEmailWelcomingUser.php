@@ -3,8 +3,7 @@
 namespace App\Listeners;
 
 use Illuminate\Auth\Events\Verified;
-use App\Mail\UserRegisteredMail;
-use Illuminate\Support\Facades\Mail;
+use App\Notifications\EmailVerified;
 
 class SendEmailWelcomingUser
 {
@@ -15,7 +14,6 @@ class SendEmailWelcomingUser
 
     public function handle(Verified $event)
     {
-        Mail::to($event->user)            
-            ->send(new UserRegisteredMail($event));
+        $event->user->notify(new EmailVerified($event));
     }
 }
