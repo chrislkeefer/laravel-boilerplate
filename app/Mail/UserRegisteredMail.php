@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-use App\Events\UserCreated;
+use Illuminate\Auth\Events\Verified;
 
 class UserRegisteredMail extends Mailable implements ShouldQueue
 {
@@ -15,7 +15,7 @@ class UserRegisteredMail extends Mailable implements ShouldQueue
 
     protected $event;
 
-    public function __construct(UserCreated $event)
+    public function __construct(Verified $event)
     {
         $this->event = $event;
     }

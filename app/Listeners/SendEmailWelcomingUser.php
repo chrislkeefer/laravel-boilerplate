@@ -2,18 +2,18 @@
 
 namespace App\Listeners;
 
-use App\Events\UserCreated;
+use Illuminate\Auth\Events\Verified;
 use App\Mail\UserRegisteredMail;
 use Illuminate\Support\Facades\Mail;
 
-class EmailNewUser
+class SendEmailWelcomingUser
 {
     public function __construct()
     {
         //
     }
 
-    public function handle(UserCreated $event)
+    public function handle(Verified $event)
     {
         Mail::to($event->user)            
             ->send(new UserRegisteredMail($event));
