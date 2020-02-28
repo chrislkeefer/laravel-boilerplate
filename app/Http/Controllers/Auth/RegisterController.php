@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Interactions\CreateUser;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -28,6 +29,6 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        return $this->interact(\App\Interactions\CreateUser::class, compact('data'));
+        return $this->interact(CreateUser::class, compact('data'));
     }
 }
